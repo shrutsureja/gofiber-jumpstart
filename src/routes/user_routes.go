@@ -1,8 +1,12 @@
 package routes
 
-import "github.com/gofiber/fiber/v2"
+import (
+	c "app/src/controllers/user"
+
+	"github.com/gofiber/fiber/v2"
+)
 
 func SetupUserRoutes(router fiber.Router) {
 	// User Routes
-	router.Get("/")
+	router.Post("/", c.HandleCreateUser)
 }

@@ -2,6 +2,7 @@
 include .env
 
 MIGRATIONS_DIR="./src/database/migrations"
+DB_URI="postgres://postgres:postgres@localhost:5432/app_db?sslmode=disable"
 
 # Default task
 .PHONY: help

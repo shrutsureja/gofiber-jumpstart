@@ -2,7 +2,7 @@ package database
 
 import (
 	"app/src/config"
-	"app/src/utils/logger"
+	"app/src/utils/custom_logger"
 	"embed"
 
 	"github.com/pressly/goose/v3"
@@ -13,7 +13,7 @@ import (
 //go:embed migrations/*.sql
 var EmbedMigrations embed.FS
 
-var log = logger.GetLogger()
+var log = custom_logger.GetLogger()
 var DB *gorm.DB
 
 func InitDB(cfg config.Config) {

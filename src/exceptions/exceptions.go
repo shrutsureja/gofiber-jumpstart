@@ -2,7 +2,7 @@ package exceptions
 
 import (
 	"app/src/utils"
-	"app/src/utils/logger"
+	"app/src/utils/custom_logger"
 	"errors"
 	"fmt"
 
@@ -10,7 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var log = logger.GetLogger()
+var log = custom_logger.GetLogger()
 
 // CustomError is a struct that holds a message, title and error code
 type CustomError struct {

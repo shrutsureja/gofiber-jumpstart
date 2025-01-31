@@ -12,7 +12,7 @@ import (
 	"app/src/middlewares"
 	"app/src/routes"
 	"app/src/utils"
-	"app/src/utils/logger"
+	"app/src/utils/custom_logger"
 
 	"github.com/bytedance/sonic"
 	"github.com/gofiber/fiber/v2"
@@ -24,7 +24,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/requestid"
 )
 
-var log = logger.GetLogger()
+var log = custom_logger.GetLogger()
 
 func main() {
 	// Load configuration

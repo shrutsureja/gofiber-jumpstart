@@ -1,8 +1,8 @@
 package user
 
 import (
+	"app/src/custom_errors"
 	"app/src/dtos"
-	"app/src/exceptions"
 	"app/src/utils"
 
 	"github.com/gofiber/fiber/v2"
@@ -11,16 +11,16 @@ import (
 func HandleCreateUser(c *fiber.Ctx) error {
 	dto := new(dtos.CreateUserDto)
 	if err := c.BodyParser(dto); err != nil {
-		return exceptions.ErrorHandler(c, exceptions.CommonErrors.BodyParsingFailed)
+		return custom_errors.BadRequestError(custom_errors.CommonErrorsCodes.BodyParsingFailed, custom_errors.CommonErrors.BodyParsingFailed, nil)
 	}
 	if validationMessage, err := utils.ValidateStruct(dto, dtos.CreateUserDtoValidationMessages); err != nil {
-		return exceptions.ErrorHandler(c, exceptions.CommonErrors.BodyValidationFailed, validationMessage)
+		return custom_errors.BadRequestError(custom_errors.CommonErrorsCodes.BodyValidationFailed, custom_errors.CommonErrors.BodyValidationFailed, validationMessage)
 	}
 
 	err := CreateUser(c, dto)
 	if err != nil {
-		return exceptions.ErrorHandler(c, err)
+		return err
 	}
 
-	return utils.SendResponse(c, fiber.StatusCreated, "", "User created successfully", nil)
+	return utils.SendResponse(c, fiber.StatusCreated, "User created successfully", nil)
 }

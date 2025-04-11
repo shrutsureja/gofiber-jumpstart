@@ -1,8 +1,6 @@
 package utils
 
 import (
-	"fmt"
-
 	"github.com/go-playground/validator/v10"
 )
 
@@ -14,7 +12,6 @@ func ValidateStruct(data interface{}, validationMessage map[string]string) (map[
 	if err != nil {
 		validationErrors := err.(validator.ValidationErrors)
 		errorMessages := make(map[string]string)
-		fmt.Printf("Validation Errors: %+v\n", validationErrors)
 		for _, err := range validationErrors {
 			fieldTag := err.Field() + "." + err.Tag()
 			message, ok := validationMessage[fieldTag]

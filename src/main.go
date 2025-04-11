@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"app/src/config"
+	"app/src/custom_errors"
 	"app/src/database"
 	"app/src/middlewares"
 	"app/src/routes"
@@ -49,6 +50,7 @@ func main() {
 		BodyLimit:             20 * 1024 * 1024, // 20 MB body limit
 		JSONEncoder:           sonic.Marshal,
 		JSONDecoder:           sonic.Unmarshal,
+		ErrorHandler:          custom_errors.ErrorHandler,
 	})
 
 	// Middlewares

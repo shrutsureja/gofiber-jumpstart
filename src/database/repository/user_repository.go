@@ -9,10 +9,7 @@ type userRepository struct{}
 
 var UserRepository = userRepository{}
 
+// Create a new user
 func (ur *userRepository) CreateUser(user *models.User) error {
-	// Create a new user
-	if err := database.DB.Create(user).Error; err != nil {
-		return err
-	}
-	return nil
+	return database.DB.Create(user).Error
 }

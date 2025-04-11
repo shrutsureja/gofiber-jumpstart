@@ -1,0 +1,8 @@
+defaultBaseImage: gcr.io/distroless/static-debian12:nonroot
+defaultPlatforms:
+  - linux/amd64
+defaultFlags:
+  - -trimpath
+defaultLdflags:
+  - -s
+  - -w
